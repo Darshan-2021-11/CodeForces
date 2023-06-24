@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPrime(int n) {
+  for(int i=2; i < sqrt(n); i++){
+    if(!(n % i)) return false;
+  }
+  return true;
+}
+
+int solve() {
+  int n, m, non_prime, product;
+  cin >> n >> m;
+  product = n * m;
+  non_prime = isPrime(min(n, m)) ? max(n, m): min(n, m);
+
+  if(non_prime == m) {
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; i < m; j++) {
+	cout << product-- << ' ';
+      }
+      cout << '\n';
+    }
+  } else {
+    int tmp;
+    for(int i = 0; i < n; i++) {
+      tmp = product;
+      for(int j = 0; j < m; j++) {
+	cout << tmp << ' ';
+	tmp -= n;
+      }
+      product--;
+      cout << '\n';
+    }
+  }
+  return 0;
+}
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  int t;
+  while(t--) solve();
+
+  return 0;
+}

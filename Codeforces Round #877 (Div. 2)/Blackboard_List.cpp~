@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef ll long long;
+
+int solve() {
+  // If there is a negative number, then it is surely
+  // one of the original numbers, since the later pr-
+  // cess only generated positive numbers.
+
+  // Otherwise sort the array and get the largest nu-
+  // mber since subtracting with a positive number
+  // can never yield a larger number.
+   int n;
+   cin >> n;
+   ll a[n], original = 0;
+
+   for(int i = 0; i < n; i++) {
+     cin >> a[i];
+     if(a[i] < 0) original = a[i];
+   }
+
+   if(negative_number != 0) {
+     cout << original << '\n';
+     return 0;
+   } else {
+     // Not sorting but just finding the largest
+     // element like in bubble sort
+     for(int i = 0; i < n-1; i++) {
+       original = max(a[i], a[i + 1]);
+     }
+   }
+
+   cout << original << '\n';
+   return 0;
+}
+
+int main() {
+  int t;
+  cin >> t;
+  
+  while(t--) solve();
+  
+  return 0;
+}
+       
